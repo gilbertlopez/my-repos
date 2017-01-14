@@ -25,7 +25,9 @@
 			<td>${book.publisher }</td>
 			<td>${book.description}</td>
 			<td>$ ${book.price}</td>
-			<th><a href='<spring:url value="/books/${book.id}" />'><span class="glyphicon glyphicon-info-sign"></span></a></th>
+			<th><a href='<spring:url value="/books/${book.id}" />'><span class="glyphicon glyphicon-info-sign"></span></a>
+			<a href='<spring:url value="/admin/deleteBook/${book.id}" />' onclick="if (!(confirm('Are you sure you want to delete this product?'))) return false"><span class="glyphicon glyphicon-remove"></span></a>
+			</th>
 		</tr>
 	</c:forEach>
 </table>
