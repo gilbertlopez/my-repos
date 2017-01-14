@@ -9,7 +9,7 @@
             <p class="lead">Book Information</p>
         </div>
         <div class="container">
- 			<form:form action="${pageContext.request.contextPath}/admin/saveBook" modelAttribute="book" method="POST">
+ 			<form:form action="${pageContext.request.contextPath}/admin/saveBook" modelAttribute="book" method="POST" enctype="multipart/form-data">
  				<div class="form-group">
  					<label for="title">Title</label>
  					<form:input path="title" id="title" class="form-control"/>
@@ -30,6 +30,12 @@
  					<label for="price">Price</label>
  					<form:input path="price" id="price" class="form-control"/>
  				</div>
+	 			<div class="form-group">
+					<label class="control-label" for="bookImage">Upload Image File</label>
+					<form:input path="bookImage" id="bookImage" type="file"
+						class="form:input-large" />
+				</div>
+ 				
  				<br><br>
 				<input type="submit" value="Add" class="btn btn-primary" >
 				<a href='<spring:url value="/admin/bookInventory" />' class="btn btn-default">Cancel</a>							 			

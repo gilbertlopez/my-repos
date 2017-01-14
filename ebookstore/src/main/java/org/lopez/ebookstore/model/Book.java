@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="book")
@@ -23,6 +26,9 @@ public class Book {
 	private String publisher;
 	
 	private double price;
+	
+	@Transient
+	private MultipartFile bookImage;
 
 	public int getId() {
 		return id;
@@ -76,6 +82,14 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", category=" + category + ", title=" + title + ", description=" + description
 				+ ", publisher=" + publisher + ", price=" + price + "]";
+	}
+
+	public MultipartFile getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(MultipartFile bookImage) {
+		this.bookImage = bookImage;
 	}
 	
 	
