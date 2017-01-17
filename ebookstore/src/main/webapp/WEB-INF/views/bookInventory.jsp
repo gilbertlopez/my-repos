@@ -7,9 +7,9 @@
 
 		<p class="lead">List of Available Books</p>
 	</div>
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-striped table-hover">
 		<thead>
-			<tr>
+			<tr class="bg-success">
 				<th></th>
 				<th>Title</th>
 				<th>Category</th>
@@ -33,7 +33,9 @@
 						class="glyphicon glyphicon-info-sign"></span></a> <a
 					href='<spring:url value="/admin/deleteBook/${book.id}" />'
 					onclick="if (!(confirm('Are you sure you want to delete this product?'))) return false"><span
-						class="glyphicon glyphicon-remove"></span></a></th>
+						class="glyphicon glyphicon-remove"></span></a>
+					<a href='<spring:url value="/admin/editBook/${book.id}" />'><span
+						class="glyphicon glyphicon-pencil"></span></a></th>
 			</tr>
 		</c:forEach>
 	</table>

@@ -38,4 +38,9 @@ public class BookDaoImpl extends AbstractDao<Integer, Book> implements BookDao {
 		delete(book);
 	}
 
+	@Override
+	public void updateBook(Book book) {
+		update(book);
+	}
+
 }
