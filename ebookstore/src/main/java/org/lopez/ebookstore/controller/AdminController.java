@@ -1,10 +1,5 @@
 package org.lopez.ebookstore.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,14 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	
-	private Path path;
-	
+
 	@Autowired
 	private BookService bookService;
 
@@ -51,34 +43,13 @@ public class AdminController {
 	
 	@PostMapping("/saveBook")
 	String saveBook(@ModelAttribute("book") Book book, HttpServletRequest request) {
-		bookService.addBook(book);
-		
-		MultipartFile bookImage = book.getBookImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + book.getId() +".png");
-		if(bookImage != null && !bookImage.isEmpty()) {
-			try {
-				bookImage.transferTo(new File(path.toString()));
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new RuntimeException("Book image saving failed", e);
-			}
-		}
+		bookService.addBook(book, request);	
 		return "redirect:/admin/bookInventory";
 	}
 	
 	@GetMapping("/deleteBook/{id}")
 	String deleteBook(@PathVariable int id, HttpServletRequest request) {
-		bookService.deleteBook(id);
-		
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + id + ".png");
-		
-		try {
-			Files.deleteIfExists(path);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		bookService.deleteBook(id, request);
 		return "redirect:/admin/bookInventory";
 	}
 	
@@ -91,20 +62,7 @@ public class AdminController {
 	
 	@PostMapping("/updateBook")
 	public String updateBook(@ModelAttribute Book book, HttpServletRequest request) {
-		MultipartFile bookImage = book.getBookImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + book.getId() + ".png");
-		
-		if(bookImage != null && !bookImage.isEmpty()) {
-			try {
-				bookImage.transferTo(new File(path.toString()));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-				throw new RuntimeException("Book image saving failed", e);
-			}
-		}
-		
-		bookService.updateBook(book);
+		bookService.updateBook(book, request);
 		return "redirect:/admin/bookInventory";
 	}
 }

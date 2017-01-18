@@ -1,5 +1,6 @@
 package org.lopez.ebookstore.config;
 
+import org.lopez.ebookstore.service.FileUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public MultipartResolver multipartResolver() {
 		return new StandardServletMultipartResolver();
+	}
+	
+	@Bean
+	public FileUtil fileUtil() {
+		return new FileUtil();
 	}
 	
 }

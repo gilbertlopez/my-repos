@@ -1,18 +1,14 @@
 package org.lopez.ebookstore.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.lopez.ebookstore.model.Book;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository("bookDao")
-@Transactional
 public class BookDaoImpl extends AbstractDao<Integer, Book> implements BookDao {
 
 	@Override
