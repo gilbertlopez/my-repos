@@ -3,12 +3,14 @@ package org.lopez.ebookstore.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.lopez.ebookstore.model.Book;
 import org.lopez.ebookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +44,9 @@ public class AdminController {
 	}
 	
 	@PostMapping("/saveBook")
-	String saveBook(@ModelAttribute("book") Book book, HttpServletRequest request) {
+	String saveBook(@Valid @ModelAttribute("book") Book book, BindingResult result, HttpServletRequest request) {
+		if(result.hasErrors()) return "addBook";
+		
 		bookService.addBook(book, request);	
 		return "redirect:/admin/bookInventory";
 	}
@@ -61,7 +65,9 @@ public class AdminController {
 	}
 	
 	@PostMapping("/updateBook")
-	public String updateBook(@ModelAttribute Book book, HttpServletRequest request) {
+	public String updateBook(@Valid @ModelAttribute Book book, BindingResult result, HttpServletRequest request) {
+		if(result.hasErrors()) return "editBook";
+		
 		bookService.updateBook(book, request);
 		return "redirect:/admin/bookInventory";
 	}

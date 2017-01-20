@@ -12,22 +12,27 @@
  			<form:form action="${pageContext.request.contextPath}/admin/saveBook" modelAttribute="book" method="POST" enctype="multipart/form-data">
  				<div class="form-group">
  					<label for="title">Title</label>
+ 					<form:errors path="title" cssStyle="color: #ff0000;" />
  					<form:input path="title" id="title" class="form-control"/>
  				</div>
  				<div class="form-group">
  					<label for="description">Description</label>
+ 					<form:errors path="description" cssStyle="color: #ff0000;" />
  					<form:textarea path="description" id="description" class="form-control"/>
  				</div>
   				<div class="form-group">
  					<label for="publisher">Publisher</label>
+ 					<form:errors path="publisher" cssStyle="color: #ff0000;" />
  					<form:input path="publisher" id="publisher" class="form-control"/>
  				</div>				 				
  				<div class="form-group">
  					<label for="category">Category</label>
+ 					<form:errors path="category" cssStyle="color: #ff0000;" />
  					<form:input path="category" id="category" class="form-control"/>
  				</div>
   				<div class="form-group">
  					<label for="price">Price</label>
+ 					<form:errors path="price" cssStyle="color: #ff0000;" />
  					<form:input path="price" id="price" class="form-control"/>
  				</div>
 	 			<div class="form-group">

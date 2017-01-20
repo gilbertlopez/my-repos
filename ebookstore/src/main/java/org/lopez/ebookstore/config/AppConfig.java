@@ -1,9 +1,11 @@
 package org.lopez.ebookstore.config;
 
 import org.lopez.ebookstore.service.FileUtil;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -35,6 +37,13 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public FileUtil fileUtil() {
 		return new FileUtil();
+	}
+	
+	@Bean
+	public MessageSource messageSource() {
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasename("messages");
+		return messageSource;
 	}
 	
 }

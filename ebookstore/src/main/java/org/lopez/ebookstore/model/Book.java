@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,14 +19,19 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@NotNull
 	private String category;
 	
+	@Size(min=2, max=45)
 	private String title;
 	
+	@Size(max=100)
 	private String description;
 	
+	@Size(min=2, max=45)
 	private String publisher;
 	
+	@NotNull
 	private double price;
 	
 	@Transient
