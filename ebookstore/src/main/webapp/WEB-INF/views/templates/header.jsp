@@ -17,6 +17,9 @@
     
         <!-- Main CSS -->
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+    
+            <!-- App CSS for Login Form-->
+    <link href="<c:url value="/resources/css/app.css" />" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
@@ -44,7 +47,7 @@
       <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href='<c:url value="/" />'>Home</a></li>
             <li><a href='<c:url value="/books" />'>Book List</a></li>
             <li><a href='<c:url value="/admin" />'>Administrators</a></li>
             <li><a href="#">Downloads</a></li>

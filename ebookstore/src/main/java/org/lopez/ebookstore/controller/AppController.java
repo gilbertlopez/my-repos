@@ -15,11 +15,6 @@ public class AppController {
 	
 	@Autowired
 	private BookService bookService;
-
-	@GetMapping("/")
-	public String home(){
-		return "home";
-	}
 	
 	@GetMapping("/books")
 	public String bookList(Model model) {
