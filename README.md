@@ -4,19 +4,19 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary
-e-Commerce project using Spring and Hibernate
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Sample
+e-Commerce project using Spring MVC and Hibernate
+* Version 1.0
+* https://gilbert_lopez@bitbucket.org/gilbert_lopez/ebookstore.git
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
+* Requires Spring Tool Suite or Spring IDE for Eclipse and Maven plugin
+* Configuration - See configuration classes
+* Dependencies- See POM file
+* Database configuration - This sample uses MySQL. See application.properties
 * How to run tests
-* Deployment instructions
+* Deployment - Run mvn install to build war file and deploy to web container 
 
 ### Contribution guidelines ###
 
