@@ -15,6 +15,8 @@ e-Commerce project using Spring MVC and Hibernate
 * Configuration - See configuration classes
 * Dependencies- See POM file
 * Database configuration - This sample uses MySQL. See application.properties
+* Spring Security setup - This example uses Spring security Database User schema.  
+* Scripts are located at https://docs.spring.io/spring-security/site/docs/3.0.x/reference/appendix-schema.html
 * How to run tests
 * Deployment - Run mvn install to build war file and deploy to web container 
 
